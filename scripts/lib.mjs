@@ -3,7 +3,7 @@
 // Role words that fit the target directions: AI solutions, partnerships/BD, product/project, automation.
 export const ROLE = /solution|consultant|partner|alliance|adoption|transformation|business development|\bbd\b|go-to-market|\bgtm\b|account (manager|executive)|customer success|implementation|deployment|forward deployed|product (manager|owner|lead|operations)|program manager|project manager|automation|operations|strategy|growth/i;
 // Hands-on engineering roles need a coding background this profile doesn't have yet.
-export const EXCLUDE = /intern|graduate|software engineer|developer|full[- ]stack|(ai|ml|data|platform|cloud|devops|backend|frontend|security|machine learning) engineer|research (scientist|engineer)|data scientist|designer|recruit|talent acquisition|legal|counsel|accountant|payroll|site reliability/i;
+export const EXCLUDE = /intern|graduate|software engineer|developer|full[- ]stack|(ai|ml|data|platform|cloud|devops|backend|frontend|security|machine learning) engineer|research (scientist|engineer)|data scientist|solutions? (engineer|architect)|designer|recruit|talent acquisition|legal|counsel|accountant|payroll|site reliability/i;
 const SEA = /singapore|\bapac\b|asia[- ]pacific|southeast asia|\bsea\b|\basia\b/i;
 const REMOTE_OK = /asia|singapore|worldwide|anywhere|apac/i;
 
@@ -11,7 +11,9 @@ export const relevant = title => ROLE.test(title ?? "") && !EXCLUDE.test(title ?
 export const inRegion = location => SEA.test(location ?? "");
 export const remoteOk = location => REMOTE_OK.test(location ?? "");
 
+// Greenhouse sends descriptions as escaped HTML (&lt;p&gt;), so entities are decoded before tags are removed.
 export const stripHtml = html => String(html ?? "")
+  .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&amp;/g, "&")
   .replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&#39;|&rsquo;/g, "'")
   .replace(/&quot;/g, '"').replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
 

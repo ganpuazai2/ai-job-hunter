@@ -21,6 +21,8 @@ test("drops engineering, recruiting and junior roles", () => {
     "Technical Recruiter, APAC",
     "Data Scientist",
     "Graduate Programme 2027",
+    "Enterprise Solutions Engineer - Singapore",
+    "Sr. Solutions Architect",
   ]) assert.ok(!relevant(title), title);
 });
 
@@ -48,6 +50,10 @@ test("turns job description HTML into plain text", () => {
   assert.equal(stripHtml("<p>Work with <b>partners</b>&nbsp;&amp; teams</p>\n<ul><li>APAC</li></ul>"),
     "Work with partners & teams APAC");
   assert.equal(stripHtml(null), "");
+});
+
+test("decodes Greenhouse's escaped HTML before removing tags", () => {
+  assert.equal(stripHtml("&lt;p&gt;Own &lt;b&gt;APAC&lt;/b&gt; partners &amp;amp; deals&lt;/p&gt;"), "Own APAC partners & deals");
 });
 
 test("splits a digest on --- lines", () => {
