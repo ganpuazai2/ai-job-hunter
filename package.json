@@ -1,0 +1,13 @@
+{
+  "name": "ai-job-hunter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A scheduled Claude agent that finds AI jobs in Singapore and sends the best matches to Telegram.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "fetch": "node scripts/fetch-jobs.mjs",
+    "test": "node --test"
+  },
+  "license": "MIT"
+}
