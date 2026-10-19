@@ -35,7 +35,7 @@ You need a Claude plan with Claude Code on the web, a GitHub account and a Teleg
 
 1. Fork this repo and make your fork **private**, since it will hold your CV.
 2. Replace `profile.md` with your CV and edit `preferences.md`. Change the search words and company lists at the top of `scripts/fetch-jobs.mjs` and `scripts/lib.mjs` to fit your field.
-3. Create a Telegram bot with [@BotFather](https://t.me/BotFather) and get your chat ID from [@userinfobot](https://t.me/userinfobot).
+3. Create a Telegram bot with [@BotFather](https://t.me/BotFather), open it and press **Start** (a bot can't message you until you do), then get your chat ID from [@userinfobot](https://t.me/userinfobot).
 4. In Claude Code on the web, create a cloud environment with **limited network access** and allow these domains: `api.mycareersfuture.gov.sg`, `boards-api.greenhouse.io`, `api.ashbyhq.com`, `api.lever.co`, `remotive.com`, `api.telegram.org`. Add `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` as environment variables.
 5. Create a routine on that environment, pointed at your fork, with the prompt: *Read RUN.md in the repository root and follow it exactly, step by step.* Don't attach any connectors.
 
